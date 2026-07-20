@@ -435,7 +435,7 @@ h1 {
 
     z-index: 9999;
 
-    animation: hideCelebration .6s ease forwards;
+    animation: hideCelebration 2.5s ease forwards;
     animation-delay: 5s;
 }
 
@@ -455,11 +455,39 @@ h1 {
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
 
-    animation: pop .8s ease;
+    animation:
+        pop .8s ease,
+        smoothFade 2.5s ease 5s forwards;
 
     max-width: 90%;
     text-align: center;
     line-height: 1.4;
+
+}
+
+@keyframes smoothFade {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+@keyframes messageFade {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.9);
+    }
 
 }
 
@@ -534,7 +562,16 @@ h1 {
 
 @keyframes hideCelebration {
 
-    to {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    80% {
+        opacity: 0.2;
+    }
+
+    100% {
         opacity: 0;
         visibility: hidden;
     }
