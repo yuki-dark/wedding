@@ -30,7 +30,7 @@ function createPetal() {
             celebration.remove();
         }
 
-    }, 3600);
+    }, 5600);
 
     // ---------------------
     // 紙吹雪
