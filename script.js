@@ -112,7 +112,7 @@ function createPetal() {
     }
 
     // 約60個
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 40; i++) {
 
         setTimeout(createSparkle, i * 80);
 
@@ -122,7 +122,7 @@ function createPetal() {
 
     heartBtn.addEventListener("click", () => {
 
-        for (let i = 0; i < 80; i++) {
+        for (let i = 0; i < 40; i++) {
 
             const heart = document.createElement("div");
 
@@ -176,7 +176,7 @@ function createPetal() {
     heart.style.fontSize = 18 + Math.random() * 18 + "px";
 }
 
-setInterval(createPetal, 500);
+setInterval(createPetal, 800);
 heartBtn.animate([
     { transform: "scale(1)" },
     { transform: "scale(1.15)" },
