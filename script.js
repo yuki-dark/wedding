@@ -122,41 +122,45 @@ function createPetal() {
 
     heartBtn.addEventListener("click", () => {
 
-        // ボタンも少し動く
-        heartBtn.animate([
-            { transform: "scale(1)" },
-            { transform: "scale(1.3)" },
-            { transform: "scale(1)" }
-        ], {
-            duration: 300
-        });
-
-        // ハートを50個飛ばす
-        const rect = heartBtn.getBoundingClientRect();
-
         for (let i = 0; i < 80; i++) {
 
             const heart = document.createElement("div");
+
             heart.className = "flying-heart";
             heart.textContent = "💖";
 
-            // ボタン中央
-            heart.style.left = rect.left + rect.width / 2 + "px";
-            heart.style.top = rect.top + rect.height / 2 + "px";
 
-            // ランダムな方向
+            // 💖の中心から固定で出す
+            heart.style.left = "50%";
+            heart.style.top = "50%";
+
+
             const angle = Math.random() * Math.PI * 2;
-            const distance = 80 + Math.random() * 120;
+            const distance = 80 + Math.random() * 150;
 
-            heart.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
-            heart.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
 
-            // 少しずつ出現
-            heart.style.animationDelay = `${i * 0.03}s`;
+            heart.style.setProperty(
+                "--x",
+                `${Math.cos(angle) * distance}px`
+            );
 
-            document.body.appendChild(heart);
+            heart.style.setProperty(
+                "--y",
+                `${Math.sin(angle) * distance}px`
+            );
 
-            heart.addEventListener("animationend", () => heart.remove());
+
+            heart.style.animationDelay =
+                `${i * 0.03}s`;
+
+
+            heartBtn.appendChild(heart);
+
+
+            heart.addEventListener(
+                "animationend",
+                () => heart.remove()
+            );
         }
     });
     const box = document.getElementById("heart-box");
