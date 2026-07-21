@@ -132,14 +132,29 @@ h3 {
 }
 
 
-.message {
-
-    line-height: 2;
-
-    color: #555;
-
+/* タイトル */
+.title {
+    font-family: "Zen Old Mincho", serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #d46a92;
+    letter-spacing: 3px;
 }
 
+/* 本文 */
+.message {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 22px;
+    line-height: 2;
+    color: #555;
+}
+
+/* 名前 */
+.signature {
+    font-family: "Kaisei Decol", serif;
+    font-size: 25px;
+    color: #d46a92;
+}
 
 .date {
 
@@ -716,6 +731,77 @@ h1 {
 
         font-size: 40px;
 
+    }
+
+}
+
+.blue {
+    color: #3498db;
+}
+
+.red {
+    color: #e74c3c;
+}
+
+.flying-heart {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    z-index: 9999;
+
+    animation: bloom 1.8s ease-out forwards;
+}
+
+@keyframes bloom {
+
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(var(--x), var(--y)) scale(1.2);
+        opacity: 0;
+    }
+
+}
+
+#heart{
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    font-size: 90px;   /* 大きく */
+    cursor: pointer;
+
+    padding: 0;
+    transition: transform .2s;
+}
+
+#heart:hover{
+    transform: scale(1.1);
+}
+.pulse-heart {
+    display: inline-block;
+    animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0px #ffd700);
+    }
+
+    50% {
+        transform: scale(1.35);
+        filter: drop-shadow(0 0 12px #ffd700);
     }
 
 }
