@@ -82,8 +82,6 @@ function createPetal() {
 
     }
 
-
-
     // ---------------------
     // キラキラ
     // ---------------------
@@ -120,6 +118,65 @@ function createPetal() {
 
     }
 
+    const heartBtn = document.getElementById("heart");
+
+    heartBtn.addEventListener("click", () => {
+
+        // ボタンも少し動く
+        heartBtn.animate([
+            { transform: "scale(1)" },
+            { transform: "scale(1.3)" },
+            { transform: "scale(1)" }
+        ], {
+            duration: 300
+        });
+
+        // ハートを50個飛ばす
+        const rect = heartBtn.getBoundingClientRect();
+
+        for (let i = 0; i < 80; i++) {
+
+            const heart = document.createElement("div");
+            heart.className = "flying-heart";
+            heart.textContent = "💖";
+
+            // ボタン中央
+            heart.style.left = rect.left + rect.width / 2 + "px";
+            heart.style.top = rect.top + rect.height / 2 + "px";
+
+            // ランダムな方向
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 80 + Math.random() * 120;
+
+            heart.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
+            heart.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
+
+            // 少しずつ出現
+            heart.style.animationDelay = `${i * 0.03}s`;
+
+            document.body.appendChild(heart);
+
+            heart.addEventListener("animationend", () => heart.remove());
+        }
+    });
+    const box = document.getElementById("heart-box");
+
+    const heart = document.createElement("div");
+    heart.className = "flying-heart";
+
+    heart.style.position = "absolute";
+    heart.style.left = Math.random() * rect.width + "px";
+    heart.style.top = Math.random() * rect.height + "px";
+
+    box.appendChild(heart);
+    heart.style.fontSize = 18 + Math.random() * 18 + "px";
 }
 
 setInterval(createPetal, 500);
+heartBtn.animate([
+    { transform: "scale(1)" },
+    { transform: "scale(1.15)" },
+    { transform: "scale(1)" }
+], {
+    duration: 250
+});
