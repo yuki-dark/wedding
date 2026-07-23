@@ -756,7 +756,7 @@ h1 {
 
     animation: heartSpread 2s ease-out forwards;
 
-     will-change: transform, opacity;
+    will-change: transform, opacity;
 }
 
 
@@ -788,7 +788,20 @@ h1 {
     position: relative;
     display: inline-block;
     font-size: 70px;
+    transition: transform 0.15s ease;
     cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+#heart:focus,
+#heart:active {
+    transform: scale(0.9);
+}
+#heart:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 #heart:hover {
